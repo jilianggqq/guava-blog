@@ -1,7 +1,9 @@
 package bbejeck.support.lucene;
 
 import bbejeck.support.BaseSample;
+
 import com.google.common.util.concurrent.ListenableFuture;
+
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import static java.lang.System.out;
 /**
  * Created by IntelliJ IDEA.
  * User: bbejeck
@@ -53,6 +56,8 @@ public class SampleLuceneSearcher extends BaseSample {
         return executorService.submit(new Callable<List<String>>() {
             @Override
             public List<String> call() throws Exception {
+				out.println(Thread.currentThread().getName());
+
                 return search(query);
             }
         });
